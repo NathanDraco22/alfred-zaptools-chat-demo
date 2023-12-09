@@ -413,9 +413,9 @@ packages:
     dependency: "direct main"
     description:
       name: zaptools_server
-      sha256: c6bab4ebe62162a1a9c42ae51badbba3cf571b0e102d0f8756d9e0a55f93c0ab
+      sha256: a6f00a41ffbd0de4601179b681c8fe7ac96d0578cd0087bdeaccc76bc7db8489
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0-dev"
+    version: "0.2.0-dev3"
 sdks:
   dart: ">=3.2.3 <4.0.0"

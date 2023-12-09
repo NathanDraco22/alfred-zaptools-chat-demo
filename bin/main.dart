@@ -8,14 +8,17 @@ void main(List<String> arguments) async {
   final eventRegister = EventRegister();
   final room = Room("chats");
 
-  eventRegister.onEvent("join-room", (context) { 
-    room.add(context.connection);
+  eventRegister.onEvent("join-room", (context) {
+    final meta = MetaTag(name: context.payload["userName"]);
+    room.add(context.connection, metaTag: meta);
     room.send("user-joined", context.eventData.payload, exclude: context.connection);
   });
 
   eventRegister.onDisconnected((context) {
+    final meta = room.getMeta(context.connection);
     room.remove(context.connection);
-    room.send("user-left", "Alguien", exclude: context.connection);
+    print(meta);
+    room.send("user-left", meta?.name ?? "unknow", exclude: context.connection);
   });
 
   eventRegister.onEvent("send", (context) {
